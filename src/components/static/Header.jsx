@@ -9,7 +9,7 @@ const Header = () => {
         {/* Navbar a la izquierda */}
         <Box display="flex" alignItems="center">
           <Button color="inherit" sx={{ borderRadius: 0, '&:focus': { outline: 'none' } }}>Home</Button>
-          <Button color="inherit" sx={{ borderRadius: 0, '&:focus': { outline: 'none' } }}>Latest releases</Button>
+          <Button color="inherit" sx={{ borderRadius: 0, '&:focus': { outline: 'none' } }}>Latest Releases</Button>
           <Button color="inherit" sx={{ borderRadius: 0, '&:focus': { outline: 'none' } }}>Popular</Button>
           <Button color="inherit" sx={{ borderRadius: 0, '&:focus': { outline: 'none' } }}>Search</Button>
         </Box>

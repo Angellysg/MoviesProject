@@ -10,7 +10,7 @@ const Footer = () => {
             <Toolbar>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '10px 0' }}>
                     <Typography variant="h6" color="inherit" sx={{ marginBottom: '5px' }}>
-                        🎥 Movies App
+                        🎥 Movie App
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Typography variant="body1" color="inherit" sx={{ marginRight: '10px' }}>
