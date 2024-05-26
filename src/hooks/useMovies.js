@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 export default function useMovies() {
   const [movies, setMovies] = useState([]);
@@ -10,7 +10,7 @@ export default function useMovies() {
   const API_KEY = '803a06d116a4cbbaba13c042e350b653'; // Reemplaza con tu clave de API de TMDB
   const BASE_URL = 'https://api.themoviedb.org/3';
 
-  async function getMovies(filterCategory = 'now_playing', page = 1) { // Cambiado a 'now_playing'
+  const getMovies = useCallback(async (filterCategory = 'now_playing', page = 1) => {
     try {
       const response = await axios.get(`${BASE_URL}/movie/${filterCategory}`, {
         params: {
@@ -23,9 +23,9 @@ export default function useMovies() {
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
-  }
+  }, []);
 
-  async function getMovie(idMovie) {
+  const getMovie = async (idMovie) => {
     try {
       const response = await axios.get(`${BASE_URL}/movie/${idMovie}`, {
         params: {
@@ -36,11 +36,11 @@ export default function useMovies() {
     } catch (error) {
       console.error("Error fetching movie:", error);
     }
-  }
+  };
 
-  function changePage(newPage) {
+  const changePage = (newPage) => {
     setPage(newPage);
-  }
+  };
 
   return {
     movies,

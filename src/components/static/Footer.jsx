@@ -6,9 +6,9 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const Footer = () => {
     return (
-        <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, backgroundColor: '#2c3e50' }}>
+        <AppBar position="relative" sx={{ top: 'auto', bottom: 0, backgroundColor: '#2c3e50', marginTop: '30px' }}>
             <Toolbar>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '10px 0' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '5px 0' }}>
                     <Typography variant="h6" color="inherit" sx={{ marginBottom: '5px' }}>
                         🎥 Movie App
                     </Typography>
@@ -67,4 +67,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

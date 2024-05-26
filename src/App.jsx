@@ -2,15 +2,14 @@ import React from 'react';
 import { Container } from '@mui/material';
 import Header from './components/static/Header';
 import Footer from './components/static/Footer';
-import MoviesCarrousel from './components/MoviesCarrousel';
+import './App.css'; // Importa el archivo CSS global
+import HomeView from './views/HomeView';
 
 function App() {
   return (
     <>
       <Header />
-      <Container sx={{ marginTop: '80px' }}>
-        <MoviesCarrousel />
-      </Container>
+      <HomeView />
       <Footer />
     </>
   );
