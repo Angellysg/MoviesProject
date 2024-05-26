@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import Header from './components/Header'
+import Header from './components/static/Header'
+import Footer from './components/static/Footer'
 import './App.css'
 
 function App() {
@@ -8,6 +8,9 @@ function App() {
   return (
     <>
       <Header/>
+      <Footer/>
+
+      
     </>
   )
 }
