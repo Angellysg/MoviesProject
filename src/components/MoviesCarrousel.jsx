@@ -46,27 +46,11 @@ const MoviesCarrousel = () => {
           slidesToScroll: 1
         }
       }
-    ],
-    customPaging: function(i) {
-      return (
-        <Box
-          component="span"
-          key={i}
-          sx={{
-            display: 'inline-block',
-            width: '20px', // Ancho más pequeño
-            height: '2px', // Altura más delgada
-            backgroundColor: '#ccc',
-            margin: '0 3px', // Separación entre rayitas
-            cursor: 'pointer',
-          }}
-        />
-      );
-    },
+    ]
   };
 
   return (
-    <Box sx={{ width: '100%', marginBottom: '20px' }}> {/* Agregar margen inferior */}
+    <Box sx={{ width: '100%' ,marginTop : '-20px' }}>
       {movies.length === 0 ? (
         <Typography variant="h6" sx={{ textAlign: 'center' }}>Loading...</Typography>
       ) : (

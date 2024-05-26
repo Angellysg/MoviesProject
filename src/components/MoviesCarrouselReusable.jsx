@@ -49,7 +49,7 @@ const MoviesCarrouselReusable = ({ category }) => {
   };
 
   return (
-    <Box sx={{ width: '100%', marginTop: '30px', marginBottom: '30px' }}> {/* Agregar margen superior e inferior */}
+    <Box sx={{ width: '100%', marginTop: '30px', marginBottom: '20px' }}> {/* Agregar margen superior e inferior */}
       <Box sx={{ margin: '0 auto', width: '80%' }}> {/* Envoltorio para el carrusel */}
         {movies.length === 0 ? (
           <Typography variant="h6" sx={{ textAlign: 'center' }}>Loading...</Typography>

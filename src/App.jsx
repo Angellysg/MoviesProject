@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from '@mui/material';
 import Header from './components/static/Header';
 import Footer from './components/static/Footer';
 import './App.css'; // Importa el archivo CSS global
