@@ -9,7 +9,7 @@ export default function useMovies() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_KEY = '803a06d116a4cbbaba13c042e350b653'; // Reemplaza con tu clave de API de TMDB
+  const API_KEY = '803a06d116a4cbbaba13c042e350b653';
   const BASE_URL = 'https://api.themoviedb.org/3';
 
   const getMovies = useCallback(async (filterCategory = 'now_playing', page = 1) => {
@@ -24,11 +24,13 @@ export default function useMovies() {
       });
       setTotalPages(response.data.total_pages);
       setMovies(response.data.results);
-    
+    } catch (error) {
+      setError(error);
+      console.error("Error fetching movies:", error);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [API_KEY, BASE_URL]);
 
   const getMovie = useCallback(async (idMovie) => {
     setLoading(true);
@@ -46,7 +48,7 @@ export default function useMovies() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [API_KEY, BASE_URL]);
 
   const changePage = (newPage) => {
     setPage(newPage);
@@ -68,3 +70,4 @@ export default function useMovies() {
     error,
   };
 }
+

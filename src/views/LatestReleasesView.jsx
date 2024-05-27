@@ -1,14 +1,14 @@
 import React from 'react';
-import MovieCard from '../components/MovieCard'; // Corregir importación del componente MovieCard
+import MovieCard from '../components/MovieCard'; // Cambiar la importación a MoviesCard
 import { Box } from '@mui/material';
 
-const LatestReleasesView = () => { // Corregir nombre de la función LatestReleasesView
+const LatestReleasesView = () => { // Corregir el nombre de la función a LatestReleasesView
   return (
     <Box sx={{ }}>
-     <MovieCard/> {/* Corregir el nombre del componente a MovieCard */}
-    
+     <MovieCard/> {/* Cambiar el nombre del componente a MoviesCard */}
     </Box>
   );
 }
 
-export default LatestReleasesView; // Corregir exportación del componente
+export default LatestReleasesView; // No se necesita ninguna corrección aquí
+
