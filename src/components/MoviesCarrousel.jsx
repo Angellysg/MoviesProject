@@ -20,7 +20,7 @@ const MoviesCarrousel = () => {
     slidesToScroll: 1,
     arrows: true, // Muestra las flechas laterales
     autoplay: true, // Activa el movimiento automático
-    autoplaySpeed: 2000, // Define la velocidad de cambio de diapositivas en milisegundos
+    
     responsive: [
       {
         breakpoint: 1024,
