@@ -49,31 +49,28 @@ const MoviesCarrouselReusable = ({ category }) => {
   };
 
   return (
-    <Box sx={{ width: '10%', marginTop: '30px', marginBottom: '20px' }}> {/* Agregar margen superior e inferior */}
+    <Box sx={{ width: '100%', marginTop: '30px', marginBottom: '30px' }}> {/* Agregar margen superior e inferior */}
       <Box sx={{ margin: '0 auto', width: '80%' }}> {/* Envoltorio para el carrusel */}
         {movies.length === 0 ? (
           <Typography variant="h6" sx={{ textAlign: 'center' }}>Loading...</Typography>
         ) : (
           <Slider {...settings}>
             {movies.map((movie) => (
-              <Box key={movie.id} sx={{ width: '80%', margin: '0 auto' }}> {/* Ajustar el ancho del contenedor de cada película */}
-                <Box sx={{ position: 'relative', paddingBottom: '150%', overflow: 'hidden' }}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                    alt={movie.title}
-                    style={{ 
-                      width: '100%', 
-                      height: '100%', 
-                      position: 'absolute', 
-                      top: 0, 
-                      left: 0, 
-                      objectFit: 'cover', 
-                    }}
-                  />
-                </Box>
+              <Box key={movie.id} sx={{ margin: '0 auto', textAlign: 'center' }}> {/* Ajustar el ancho del contenedor de cada película */}
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.title}
+                  style={{ 
+                    width: '80%', 
+                    borderRadius: '8px',
+                    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', 
+                    marginBottom: '10px',
+                    objectFit: 'cover', 
+                  }}
+                />
                 <Typography 
                   variant="subtitle1" 
-                  sx={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}
+                  sx={{ fontWeight: 'bold' }}
                 >
                   {movie.title}
                 </Typography>

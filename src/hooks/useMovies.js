@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 
-export default function useMovies() {
+const useMovies = (category = 'now_playing') => {
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState({});
   const [page, setPage] = useState(1);
@@ -12,14 +12,14 @@ export default function useMovies() {
   const API_KEY = '803a06d116a4cbbaba13c042e350b653';
   const BASE_URL = 'https://api.themoviedb.org/3';
 
-  const getMovies = useCallback(async (filterCategory = 'now_playing', page = 1) => {
+  const getMovies = useCallback(async (filterCategory = category, pageNumber = 1) => {
     setLoading(true);
     setError(null);
     try {
       const response = await axios.get(`${BASE_URL}/movie/${filterCategory}`, {
         params: {
           api_key: API_KEY,
-          page: page,
+          page: pageNumber,
         },
       });
       setTotalPages(response.data.total_pages);
@@ -30,7 +30,7 @@ export default function useMovies() {
     } finally {
       setLoading(false);
     }
-  }, [API_KEY, BASE_URL]);
+  }, [API_KEY, BASE_URL, category]);
 
   const getMovie = useCallback(async (idMovie) => {
     setLoading(true);
@@ -55,8 +55,8 @@ export default function useMovies() {
   };
 
   useEffect(() => {
-    getMovies('now_playing', page);
-  }, [getMovies, page]);
+    getMovies(category, page);
+  }, [getMovies, page, category]);
 
   return {
     movies,
@@ -69,5 +69,6 @@ export default function useMovies() {
     loading,
     error,
   };
-}
+};
 
+export default useMovies;

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'; // Importar Link para las rutas
 
 const Header = () => {
   return (
-    <AppBar position="fixed" style={{ backgroundColor: '#2c3e50' }}>
+    <AppBar position="relative" style={{ backgroundColor: '#2c3e50' }}>
       <Toolbar>
         {/* Navbar a la izquierda */}
         <Box display="flex" alignItems="center">
