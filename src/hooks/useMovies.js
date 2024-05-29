@@ -9,7 +9,7 @@ const useMovies = (category = 'now_playing') => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_KEY = '803a06d116a4cbbaba13c042e350b653';
+  const API_KEY = import.meta.env.VITE_API_KEY;
   const BASE_URL = 'https://api.themoviedb.org/3';
 
   const getMovies = useCallback(async (filterCategory = category, pageNumber = 1) => {
