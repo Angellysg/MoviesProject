@@ -39,6 +39,7 @@ const useMovies = (initialCategory = 'now_playing') => {
       const response = await axios.get(`${BASE_URL}/movie/${idMovie}`, {
         params: {
           api_key: API_KEY,
+          append_to_response: 'videos' // Incluimos la información de videos
         },
       });
       setMovie(response.data);
