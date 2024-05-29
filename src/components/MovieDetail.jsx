@@ -71,9 +71,9 @@ const MovieDetail = () => {
             <div style={{ color: '#fff', textAlign: 'left', maxWidth: '60%' }}>
               <Typography variant="h3" gutterBottom>{movie.title}</Typography>
               <Typography variant="body1" paragraph>{movie.overview}</Typography>
-              <Typography variant="body2" color="textSecondary">Release Date: {movie.release_date}</Typography>
-              <Typography variant="body2" color="textSecondary">Rating: {movie.vote_average}</Typography>
-              <Typography variant="body2" color="textSecondary">Genres: {movie.genres.map(genre => genre.name).join(', ')}</Typography>
+              <Typography variant="body2" color="write">Release Date: {movie.release_date}</Typography>
+              <Typography variant="body2" color="write">Rating: {movie.vote_average}</Typography>
+              <Typography variant="body2" color="write">Genres: {movie.genres.map(genre => genre.name).join(', ')}</Typography>
               {trailer && (
                 <Button variant="contained" color="primary" style={{ marginTop: '20px' }} onClick={handleOpen}>
                   Watch Trailer
