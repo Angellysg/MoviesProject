@@ -8,6 +8,7 @@ const useMovies = (initialCategory = 'now_playing') => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [favorites, setFavorites] = useState([]);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const BASE_URL = 'https://api.themoviedb.org/3';
@@ -76,9 +77,31 @@ const useMovies = (initialCategory = 'now_playing') => {
     setPage(newPage);
   };
 
+  const loadFavorites = useCallback(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavorites(storedFavorites);
+  }, []);
+
+  const addToFavorites = useCallback((movie) => {
+    const updatedFavorites = [...favorites, movie];
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  }, [favorites]);
+
+  const removeFromFavorites = useCallback((id) => {
+    const updatedFavorites = favorites.filter(movie => movie.id !== id);
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  }, [favorites]);
+
+  const isFavorite = useCallback((id) => {
+    return favorites.some(movie => movie.id === id);
+  }, [favorites]);
+
   useEffect(() => {
     getMovies(initialCategory, page);
-  }, [getMovies, page, initialCategory]);
+    loadFavorites();
+  }, [getMovies, page, initialCategory, loadFavorites]);
 
   return {
     movies,
@@ -87,6 +110,10 @@ const useMovies = (initialCategory = 'now_playing') => {
     getMovie,
     searchMovies,
     changePage,
+    addToFavorites,
+    removeFromFavorites,
+    isFavorite,
+    favorites,
     totalPages,
     page,
     loading,

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Typography, CircularProgress, Box, Button, Card, CardMedia, Dialog, DialogContent, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import StarIcon from '@mui/icons-material/Star';
 import useMovies from '../hooks/useMovies';
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const { movie, getMovie, loading, error } = useMovies();
+  const { movie, getMovie, loading, error, addToFavorites, removeFromFavorites, isFavorite } = useMovies();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -26,6 +26,14 @@ const MovieDetail = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleFavoriteClick = () => {
+    if (isFavorite(movie.id)) {
+      removeFromFavorites(movie.id);
+    } else {
+      addToFavorites(movie);
+    }
   };
 
   if (loading) {
@@ -71,25 +79,24 @@ const MovieDetail = () => {
             <div style={{ color: '#fff', textAlign: 'left', maxWidth: '60%' }}>
               <Typography variant="h3" gutterBottom>{movie.title}</Typography>
               <Typography variant="body1" paragraph>{movie.overview}</Typography>
-              <Typography variant="body2" color="write">Release Date: {movie.release_date}</Typography>
-              <Typography variant="body2" color="write">Rating: {movie.vote_average}</Typography>
-              <Typography variant="body2" color="write">Genres: {movie.genres.map(genre => genre.name).join(', ')}</Typography>
+              <Typography variant="body2" color="textSecondary">Release Date: {movie.release_date}</Typography>
+              <Typography variant="body2" color="textSecondary">Rating: {movie.vote_average}</Typography>
+              <Typography variant="body2" color="textSecondary">Genres: {movie.genres.map(genre => genre.name).join(', ')}</Typography>
               {trailer && (
                 <Button variant="contained" color="primary" style={{ marginTop: '20px' }} onClick={handleOpen}>
                   Watch Trailer
                 </Button>
               )}
+              <Box display="flex" alignItems="center" marginTop={2}>
+                <IconButton onClick={handleFavoriteClick} style={{ color: isFavorite(movie.id) ? 'yellow' : 'white' }}>
+                  <StarIcon />
+                  <Typography variant="body2" color="textSecondary" style={{ marginLeft: 8 }}>Add to Favorites</Typography>
+                </IconButton>
+              </Box>
             </div>
           </Container>
-          <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-            <DialogContent style={{ padding: 0, backgroundColor: '#000', position: 'relative' }}>
-              <IconButton
-                aria-label="close"
-                onClick={handleClose}
-                style={{ position: 'absolute', right: 8, top: 8, color: '#fff', zIndex: 1 }}
-              >
-                <CloseIcon />
-              </IconButton>
+          <Dialog open={open} onClose={handleClose} maxWidth="100%" fullWidth>
+            <DialogContent style={{ padding: 0, backgroundColor: '#000' }}>
               <iframe
                 width="100%"
                 height="600"
