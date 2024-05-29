@@ -1,20 +1,26 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActions, IconButton } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const MovieCard = ({ movie }) => {
   return (
-    <Card sx={{ maxWidth: 345, m: 2 }}>
+    <Card sx={{ width: 250, height: 400 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="300"
         image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent sx={{ padding: 2 }}>
+        <Typography gutterBottom variant="h6" component="div" sx={{ fontSize: 16 }}>
           {movie.title}
         </Typography>
       </CardContent>
+      <CardActions sx={{ justifyContent: 'center', padding: 1 }}>
+        <IconButton aria-label="view movie details">
+          <VisibilityIcon />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 };

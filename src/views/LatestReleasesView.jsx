@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, CircularProgress, Grid, Typography, Pagination } from '@mui/material';
-import MovieCard from '../components/MovieCard'; // Asegúrate de que la ruta sea correcta
-import useMovies from '../hooks/useMovies'; // Asegúrate de que la ruta sea correcta
+import MovieCard from '../components/MovieCard'; 
+import useMovies from '../hooks/useMovies'; 
 
 const LatestReleasesView = () => {
   const { movies, loading, error, page, totalPages, changePage } = useMovies();
@@ -35,9 +35,9 @@ const LatestReleasesView = () => {
           Latest Releases
         </Typography>
       </Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={3} justifyContent="center">
         {movies.map((movie) => (
-          <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
+          <Grid item key={movie.id} sx={{ display: 'flex', justifyContent: 'center' }}>
             <MovieCard movie={movie} />
           </Grid>
         ))}
@@ -56,5 +56,3 @@ const LatestReleasesView = () => {
 };
 
 export default LatestReleasesView;
-
-
