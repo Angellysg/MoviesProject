@@ -35,7 +35,7 @@ const LatestReleasesView = () => {
           Latest Releases
         </Typography>
       </Box>
-      <Grid container spacing={3} justifyContent="center">
+      <Grid container spacing={2} justifyContent="center">
         {movies.map((movie) => (
           <Grid item key={movie.id} sx={{ display: 'flex', justifyContent: 'center' }}>
             <MovieCard movie={movie} />

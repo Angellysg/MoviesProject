@@ -4,15 +4,15 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const MovieCard = ({ movie }) => {
   return (
-    <Card sx={{ width: 250, height: 400 }}>
+    <Card sx={{ width: 230, height: 380, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
       <CardMedia
         component="img"
-        height="300"
+        height="280"
         image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
       />
-      <CardContent sx={{ padding: 2 }}>
-        <Typography gutterBottom variant="h6" component="div" sx={{ fontSize: 16 }}>
+      <CardContent sx={{ padding: 1 }}>
+        <Typography gutterBottom variant="h6" component="div" sx={{ fontSize: 14, textAlign: 'center' }}>
           {movie.title}
         </Typography>
       </CardContent>
