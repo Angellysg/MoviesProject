@@ -4,7 +4,7 @@ The Movies application is a comprehensive tool for managing and exploring your f
 
 ## Live Demo
 
-You can explore the live demo of the Movie Catalog app [here](https://movie-catalog-demo.vercel.app/).
+You can explore the live demo of the Movies app [here](https://movies-project-plum.vercel.app/).
 
 ## Features
 
