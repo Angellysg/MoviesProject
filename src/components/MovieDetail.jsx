@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Typography, CircularProgress, Box, Button, Card, CardMedia, Dialog, DialogContent, IconButton } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import CloseIcon from '@mui/icons-material/Close';
 import useMovies from '../hooks/useMovies';
+import { FavoritesContext } from '../context/FavoritesContext';
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const { movie, getMovie, loading, error, addToFavorites, removeFromFavorites, isFavorite } = useMovies();
+  const { movie, getMovie, loading, error } = useMovies();
+  const { addToFavorites, removeFromFavorites, isFavorite } = useContext(FavoritesContext);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
