@@ -120,6 +120,7 @@ const MovieDetail = () => {
         <Typography variant="h6" color="error" align="center">No movie details available</Typography>
       )}
     </div>
+    
   );
 };
 
