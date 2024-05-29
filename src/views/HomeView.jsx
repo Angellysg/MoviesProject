@@ -8,19 +8,19 @@ const HomeView = () => {
   const { movies, loading } = useMovies();
 
   return (
-    <Box sx={{ width: "90%", margin: "auto" }}>
-      <Box sx={{ width: "90%", marginBottom: "50px", margin: "auto" }}>
+    <Box sx={{ width: "100%", margin: "auto" }}>
+      <Box sx={{ width: "100%", marginBottom: "40px", margin: "auto" }}>
         <MoviesCarrousel movies={movies} loading={loading} sx={{margin: "auto"}} />
       </Box>
 
-      <Box sx={{ marginBottom: "60px", marginTop: "70px", }}>
+      <Box sx={{ marginBottom: "60px", marginTop: "70px", marginLeft:"40px" }}>
         <Typography variant="h5" sx={{ marginBottom: "10px" }}>
           Popular Movies
         </Typography>
         <MoviesCarrouselReusable category="popular" sx={{}} />
       </Box>
 
-      <Box sx={{ marginBottom: "60px", marginTop: "40px",}}>
+      <Box sx={{ marginBottom: "60px", marginTop: "40px", marginLeft:"40px"}}>
         <Typography variant="h5" sx={{ marginBottom: "10px" }}>
           Top Rated Movies
         </Typography>
