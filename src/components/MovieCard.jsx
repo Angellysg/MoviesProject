@@ -5,7 +5,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const MovieCard = ({ movie }) => {
   return (
-    <Link to={`/movie/${movie.title.replace(/\s+/g, '-').toLowerCase()}`} style={{ textDecoration: 'none' }}>
+    <Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
       <Card sx={{ width: 230, height: 380, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         <CardMedia
           component="img"

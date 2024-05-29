@@ -1,32 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import { Container, Typography, CircularProgress, Box, Button } from '@mui/material';
+import useMovies from '../hooks/useMovies';
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { movie, getMovie, loading, error } = useMovies();
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      try {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
-          params: {
-            api_key: process.env.REACT_APP_API_KEY,
-          },
-        });
-        setMovie(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+    console.log(`Fetching details for movie ID: ${id}`);
+    getMovie(id);
+  }, [id, getMovie]);
 
-    fetchMovie();
-  }, [id]);
+  useEffect(() => {
+    console.log('Movie data:', movie);
+    console.log('Loading:', loading);
+    console.log('Error:', error);
+  }, [movie, loading, error]);
 
   if (loading) {
     return (
@@ -42,14 +32,14 @@ const MovieDetail = () => {
 
   return (
     <Container style={{ position: 'relative', marginTop: '20px' }}>
-      {movie && (
+      {movie && movie.backdrop_path ? (
         <div
           style={{
             position: 'relative',
             width: '100%',
             height: '400px',
             marginBottom: '20px',
-            backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.backdrop_path})`,
+            backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`, // Cambiado a resolución original
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             borderRadius: '8px',
@@ -81,18 +71,18 @@ const MovieDetail = () => {
             <Typography variant="body1" paragraph>{movie.overview}</Typography>
             <Typography variant="body2" color="textSecondary">Release Date: {movie.release_date}</Typography>
             <Typography variant="body2" color="textSecondary">Rating: {movie.vote_average}</Typography>
-            {/* Agrega el botón para mostrar el video del trailer */}
-            {movie.video && (
-              <Button variant="contained" color="primary" style={{ marginTop: '20px' }}>
-                Watch Trailer
-              </Button>
-            )}
+            {/* Placeholder para el botón de trailer */}
+            {/* Este botón puede ser modificado según cómo obtienes y muestras los trailers */}
+            <Button variant="contained" color="primary" style={{ marginTop: '20px' }}>
+              Watch Trailer
+            </Button>
           </div>
         </div>
+      ) : (
+        <Typography variant="h6" color="error" align="center">No movie details available</Typography>
       )}
     </Container>
   );
 };
 
 export default MovieDetail;
-

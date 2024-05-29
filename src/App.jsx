@@ -21,7 +21,7 @@ function App() {
         <Route path="/popular" element={<PopularView />} />
         <Route path="/search" element={<SearchView />} />
         <Route path="/favorites" element={<FavoritesView />} />
-        <Route path="/movie/:title" element={<MovieDetailView />} />
+        <Route path="/movie/:id" element={<MovieDetailView />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />

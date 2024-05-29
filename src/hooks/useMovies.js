@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 
-const useMovies = (category = 'now_playing') => {
+const useMovies = (initialCategory = 'now_playing') => {
   const [movies, setMovies] = useState([]);
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(null);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -12,11 +12,11 @@ const useMovies = (category = 'now_playing') => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const BASE_URL = 'https://api.themoviedb.org/3';
 
-  const getMovies = useCallback(async (filterCategory = category, pageNumber = 1) => {
+  const getMovies = useCallback(async (category = initialCategory, pageNumber = 1) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${BASE_URL}/movie/${filterCategory}`, {
+      const response = await axios.get(`${BASE_URL}/movie/${category}`, {
         params: {
           api_key: API_KEY,
           page: pageNumber,
@@ -30,7 +30,7 @@ const useMovies = (category = 'now_playing') => {
     } finally {
       setLoading(false);
     }
-  }, [API_KEY, BASE_URL, category]);
+  }, [API_KEY, BASE_URL, initialCategory]);
 
   const getMovie = useCallback(async (idMovie) => {
     setLoading(true);
@@ -76,8 +76,8 @@ const useMovies = (category = 'now_playing') => {
   };
 
   useEffect(() => {
-    getMovies(category, page);
-  }, [getMovies, page, category]);
+    getMovies(initialCategory, page);
+  }, [getMovies, page, initialCategory]);
 
   return {
     movies,

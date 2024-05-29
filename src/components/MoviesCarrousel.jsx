@@ -50,11 +50,11 @@ const MoviesCarrousel = ({ movies, loading }) => {
       <Typography variant="h4" gutterBottom>Movies</Typography>
       <Slider {...settings}>
         {movies.map((movie) => (
-          <Link key={movie.id} to={`/movie/${movie.title.replace(/\s+/g, '-').toLowerCase()}`} style={{ textDecoration: 'none' }}>
+          <Link key={movie.id} to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
             <Card sx={{ margin: 'auto', width: '100%' }}>
               <CardMedia
                 component="img"
-                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} 
                 alt={movie.title}
                 sx={{ height: 'calc(100vh - 200px)', objectFit: 'cover' }}
               />
