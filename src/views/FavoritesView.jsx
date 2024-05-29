@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import React from 'react';
 
 const FavoritesView = () => {
-  <Box></Box>// Contenido de tu componente
+  <Box></Box>
 };
 
-export default FavoritesView; // Asegúrate de exportar el componente como default
+export default FavoritesView; 

@@ -50,6 +50,27 @@ const useMovies = (category = 'now_playing') => {
     }
   }, [API_KEY, BASE_URL]);
 
+  const searchMovies = useCallback(async (query) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(`${BASE_URL}/search/movie`, {
+        params: {
+          api_key: API_KEY,
+          query: query,
+        },
+      });
+      console.log('Response from searchMovies:', response.data); // Debug log
+      setTotalPages(response.data.total_pages);
+      setMovies(response.data.results);
+    } catch (error) {
+      setError(error);
+      console.error("Error searching movies:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [API_KEY, BASE_URL]);
+
   const changePage = (newPage) => {
     setPage(newPage);
   };
@@ -63,6 +84,7 @@ const useMovies = (category = 'now_playing') => {
     movie,
     getMovies,
     getMovie,
+    searchMovies,
     changePage,
     totalPages,
     page,
