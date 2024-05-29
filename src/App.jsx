@@ -9,7 +9,8 @@ import SearchView from './views/SearchView';
 import FavoritesView from './views/FavoritesView';
 import Error404 from './views/Error404';
 import MovieDetailView from './views/MovieDetailView';
-import './App.css'; // Importa el archivo de estilos globales
+import { FavoritesProvider } from './context/FavoritesContext';
+import './App.css'; 
 
 function App() {
   return (
@@ -20,8 +21,22 @@ function App() {
         <Route path="/latest-releases" element={<LatestReleasesView />} />
         <Route path="/popular" element={<PopularView />} />
         <Route path="/search" element={<SearchView />} />
-        <Route path="/favorites" element={<FavoritesView />} />
-        <Route path="/movie/:id" element={<MovieDetailView />} />
+        <Route 
+          path="/favorites" 
+          element={
+            <FavoritesProvider>
+              <FavoritesView />
+            </FavoritesProvider>
+          } 
+        />
+        <Route 
+          path="/movie/:id" 
+          element={
+            <FavoritesProvider>
+              <MovieDetailView />
+            </FavoritesProvider>
+          } 
+        />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
