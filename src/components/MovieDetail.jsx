@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Typography, CircularProgress, Box, Button, Card, CardMedia, Dialog, DialogContent, IconButton } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import CloseIcon from '@mui/icons-material/Close';
 import useMovies from '../hooks/useMovies';
 
 const MovieDetail = () => {
@@ -96,6 +97,9 @@ const MovieDetail = () => {
             </div>
           </Container>
           <Dialog open={open} onClose={handleClose} maxWidth="100%" fullWidth>
+            <IconButton aria-label="close" onClick={handleClose} sx={{ position: 'absolute', top: 5, right: 5, color: '#fff', zIndex: 2 }}>
+              <CloseIcon />
+            </IconButton>
             <DialogContent style={{ padding: 0, backgroundColor: '#000' }}>
               <iframe
                 width="100%"
@@ -114,6 +118,7 @@ const MovieDetail = () => {
         <Typography variant="h6" color="error" align="center">No movie details available</Typography>
       )}
     </div>
+    
   );
 };
 
