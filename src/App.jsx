@@ -8,6 +8,7 @@ import PopularView from './views/PopularView';
 import SearchView from './views/SearchView';
 import FavoritesView from './views/FavoritesView';
 import Error404 from './views/Error404';
+import MovieDetailView from './views/MovieDetailView';
 import './App.css'; // Importa el archivo de estilos globales
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/popular" element={<PopularView />} />
         <Route path="/search" element={<SearchView />} />
         <Route path="/favorites" element={<FavoritesView />} />
+        <Route path="/movie/:title" element={<MovieDetailView />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
